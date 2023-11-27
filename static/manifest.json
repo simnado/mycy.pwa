@@ -15,7 +15,7 @@
     "scope": "/",
     "theme_color": "#3367D6",
     "share_target": {
-        "action": "/import/share_target",
+        "action": "/import/share-link",
         "method": "GET",
         "params": {
           "title": "name",
