@@ -8,8 +8,8 @@ export const loader: LoaderFunction = async ({request, params}) => {
 
 export default function ShareLink() {
 
-    const data = useLoaderData<typeof loader>();
-    const { name, description, link } = data
+    const [params] = useSearchParams()
+    // const data = useLoaderData<typeof loader>();
 
     return (
         <div>
@@ -23,9 +23,9 @@ export default function ShareLink() {
                     <th>Link</th>
                 </tr>
                 <tr>
-                    <td>{name}</td>
-                    <td>{description}</td>
-                    <td>{link}</td>
+                    <td>{params.get('name')}</td>
+                    <td>{params.get('description')}</td>
+                    <td>{params.get('link')}</td>
                 </tr>
             </table>
         </div>
