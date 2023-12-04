@@ -44,7 +44,15 @@ export default function ImportForm() {
 
             <h2>Results:</h2>
             <ul>
-                {items.map(item => <li>{item.title}</li>)}
+                {items.map(item => 
+                    <li key={item.id} style={{listStyle: "none"}}>
+                        <img src={item.thumbnailUrl} style={{width: "100px"}}/>
+                        <div style={{display: 'inline-block'}}>
+                            <div>{item.title}</div>
+                            <div>{item.releaseDate}</div>
+                        </div>
+                    </li>)
+                }
             </ul>
         </div>
     )

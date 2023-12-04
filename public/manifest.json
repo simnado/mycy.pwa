@@ -28,7 +28,7 @@
         "name": "Analyze track",
         "short_name": "Analyze",
         "description": "Analyze title with myCy",
-        "url": "/import/share-link?source=pwa",
+        "url": "/import/form?source=pwa",
         "icons": [{ "src": "CYANITE Logo_348x348.png", "sizes": "348x348" }]
       }
     ],
