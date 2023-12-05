@@ -46,11 +46,13 @@ export default function ImportForm() {
             <ul>
                 {items.map(item => 
                     <li key={item.id} style={{listStyle: "none"}}>
-                        <img src={item.thumbnailUrl} style={{width: "100px"}}/>
-                        <div style={{display: 'inline-block'}}>
-                            <div>{item.title}</div>
-                            <div>{item.releaseDate}</div>
-                        </div>
+                        <a href={'/songs/'+item.id}>
+                            <img src={item.thumbnailUrl} style={{width: "100px"}}/>
+                            <div style={{display: 'inline-block'}}>
+                                <div>{item.title}</div>
+                                <div>{item.releaseDate}</div>
+                            </div>
+                        </a>
                     </li>)
                 }
             </ul>
