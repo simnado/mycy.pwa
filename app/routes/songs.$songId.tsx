@@ -30,15 +30,15 @@ export default function Song() {
 
     return (
         <div>
-            <h1>{data.song.title}</h1>
+            <h1>{data.title}</h1>
             <a href="/">home</a>
 
             <div>
-                <img src={data.song.imageUrl}/>
-                <div>by {data.song.artist}</div>
-                <div>from {data.song.releaseDate}</div>
-                <div>lang: {data.song.language}</div>
-                <p>{data.song.description}</p>
+                <img src={data.imageUrl} style={{width: '100%'}}/>
+                <div>by {data.artist}</div>
+                <div>from {data.releaseDate}</div>
+                <div>lang: {data.language}</div>
+                <p>{data.description}</p>
             </div>
         </div>
     )

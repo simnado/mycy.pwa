@@ -18,10 +18,28 @@ export async function action({
     request,
   }: ActionFunctionArgs) {
     const form = await request.formData();
+    const {geniusId} = Object.fromEntries(form)
 
+    const url = new URL(`${process.env.IMPORT_URL}/sync`);
+    const body = JSON.stringify({
+        items: [
+            {
+                priority: 1,
+                geniusId,
+            }
+        ]
+    })
+    console.log(body)
+    const searchResults = await fetch(url, {
+        method: 'post',
+        body,
+        headers: {
+            "Content-Type": "application/json",
+          },
+    })
     // do server side mutations
 
-    return json({ });
+    return json({ geniusId });
 }
 
 export default function ImportForm() {
@@ -29,6 +47,9 @@ export default function ImportForm() {
     const [params] = useSearchParams()
     const data = useLoaderData<typeof loader>();
     const { items } = data
+
+    const alreadyMatched = item => Boolean(item.id)
+    const matchable = item => Boolean(!item.id && item.spotifyId)
 
     console.log(items)
 
@@ -46,13 +67,16 @@ export default function ImportForm() {
             <ul>
                 {items.map(item => 
                     <li key={item.id} style={{listStyle: "none"}}>
-                        <a href={'/songs/'+item.id}>
-                            <img src={item.thumbnailUrl} style={{width: "100px"}}/>
+                            <img src={item.imageUrl} style={{width: "100px"}}/>
                             <div style={{display: 'inline-block'}}>
                                 <div>{item.title}</div>
-                                <div>{item.releaseDate}</div>
+                                <div>{item.releaseDate}</div> 
+                                <div>{ alreadyMatched(item) && <a href={'/songs/'+item.id}>goto song</a> }</div>
+                                <div>{ matchable(item) && <Form method="POST">
+                                        <input type="hidden" name='geniusId' value={item.geniusId}></input>
+                                        <button type="submit">Match</button>
+                                    </Form> }</div>
                             </div>
-                        </a>
                     </li>)
                 }
             </ul>
