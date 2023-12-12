@@ -38,6 +38,7 @@ export default function Song() {
                 <div>by {data.artist}</div>
                 <div>from {data.releaseDate}</div>
                 <div>lang: {data.language}</div>
+                <div>status: {data.analyzeStatus}</div>
                 <p>{data.description}</p>
             </div>
         </div>

@@ -17,6 +17,11 @@ export default function Index() {
             Search
           </a>
         </li>
+        <li>
+          <a href="songs">
+            Songs
+          </a>
+        </li>
       </ul>
     </div>
   );
