@@ -37,6 +37,8 @@ export async function action({
             "Content-Type": "application/json",
           },
     })
+
+    console.log(await searchResults.json())
     // do server side mutations
 
     return json({ geniusId });
